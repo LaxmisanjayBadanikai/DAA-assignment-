@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+
+int unique(int a[], int n)
+{
+    int i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(a[i]==a[j])
+                return 0;
+        }
+    }
+    return 1;
+}
+
+int main()
+{
+    int n,i;
+    int *a;
+    LARGE_INTEGER s,e,f;
+
+    printf("Enter n: ");
+    scanf("%d",&n);
+
+    a=(int*)malloc(n*sizeof(int));
+
+    for(i=0;i<n;i++)
+        a[i]=i;
+
+    QueryPerformanceFrequency(&f);
+
+    QueryPerformanceCounter(&s);
+    unique(a,n);
+    QueryPerformanceCounter(&e);
+
+    double t=(double)(e.QuadPart-s.QuadPart)*1000000000/f.QuadPart;
+
+    printf("Running Time = %.0lf ns\n",t);
+
+    free(a);
+    return 0;
+}
