@@ -50,8 +50,8 @@ Worst case occurs when all elements are unique.
 ---
 
 ## Program Output
-/uniqueness/output.png
-![output](output.png)
+
+![output](Uniqueness/output.png)
 
 Example output generated during execution:
 
@@ -68,7 +68,7 @@ Scatter points represent recorded values and fitted curves show the growth patte
 ---
 
 ## Output Graph
-/uniqueness/graph.png
+/Uniqueness/graph.png
 ![Graph](graph.png)
 
 ---
