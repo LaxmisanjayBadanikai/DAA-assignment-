@@ -1,42 +1,43 @@
-#include <stdio.h>
-#include <windows.h>
+import java.util.*;
 
-int gcd_middle(int a, int b)
-{
-    int g = 1;
-    int i = 2;
+public class GCD {
+    public static void main(String[] args) {
+        System.out.println("Enter two numbers: ");
 
-    while(i <= a && i <= b)
-    {
-        if(a % i == 0 && b % i == 0)
-        {
-            g = i;
+        Scanner sc = new Scanner(System.in);
+       
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        
+        ArrayList<Integer> f1 = new ArrayList<>();
+        ArrayList<Integer> f2 = new ArrayList<>();
+
+        for(int i=2;i<=a;i++){
+            while(a%i==0){
+                f1.add(i);
+                a/=i;
+            }
         }
-        i++;
+
+        for(int i=2;i<=b;i++){
+            while(b%i==0){
+                f2.add(i);
+                b/=i;
+            }
+        }
+
+        int gcd = 1;
+
+        for(int i=0;i<f1.size();i++){
+            for(int j=0;j<f2.size();j++){
+                if(f1.get(i).equals(f2.get(j))){
+                    gcd *= f1.get(i);
+                    f2.remove(j);
+                    break;
+                }
+            }
+        }
+
+        System.out.println("GCD = " + gcd);
     }
-    return g;
-}
-
-int main()
-{
-    int a = 84, b = 36;
-    int g;
-
-    LARGE_INTEGER f, s, e;
-
-    QueryPerformanceFrequency(&f);
-    QueryPerformanceCounter(&s);
-
-    g = gcd_middle(a, b);
-
-    QueryPerformanceCounter(&e);
-
-    double t = (double)(e.QuadPart - s.QuadPart) * 1e9 / f.QuadPart;
-
-    printf("Number 1 : %d\n", a);
-    printf("Number 2 : %d\n", b);
-    printf("GCD : %d\n", g);
-    printf("Time : %.0lf ns\n", t);
-
-    return 0;
 }
