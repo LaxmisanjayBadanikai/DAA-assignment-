@@ -51,7 +51,7 @@ Worst case occurs when all elements are unique.
 
 ## Program Output
 
-![output](Uniqueness/output.png)
+![output](output.png)
 
 Example output generated during execution:
 
