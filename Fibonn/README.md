@@ -63,3 +63,11 @@ T(n) = O(n)
 ## Program Output
 
 Recursive and optimized Fibonacci results with execution time.
+
+## Program Output
+
+![Output](output.png)
+
+## Graph
+
+![Graph](graph.png)
